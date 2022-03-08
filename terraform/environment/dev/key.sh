@@ -1,5 +1,8 @@
 #!/bin/bash
 
+######
+# .ssh
+######
 if [ -d /root/.ssh ]
 then
 	echo "/root/.ssh exists"
@@ -7,6 +10,20 @@ else
 	mkdir -p /root/.ssh
 fi
 
+############
+# kubeconfig
+############
+if [ -d /root/.kube ]
+then
+	echo "/root/.kube exists"
+else
+	mkdir -p /root/.kube
+	touch /root/.kube/config
+fi
+
+#####
+# PEM
+#####
 if [ -f /root/.ssh/*.pem ]
 then
 	echo "pem is there, I am removing it"
