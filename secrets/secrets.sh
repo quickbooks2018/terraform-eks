@@ -19,7 +19,14 @@ kubectl get ns
 # If you want to create remove --dry-run
 
 kubectl -n rds create secret generic rds-creds \
+  --dry-run=client \
   --from-literal=RDS_ENDPOINT=${RDS_ENDPOINT}  \
   --from-literal=DB_USERNAME=${DB_USERNAME} \
   --from-literal=DB_PASSWORD=${DB_PASSWORD}  \
   --output json
+  
+kubectl -n rds create secret generic rds-creds \
+  --from-literal=RDS_ENDPOINT=${RDS_ENDPOINT}  \
+  --from-literal=DB_USERNAME=${DB_USERNAME} \
+  --from-literal=DB_PASSWORD=${DB_PASSWORD}  \
+  --output json  
