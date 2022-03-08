@@ -119,7 +119,7 @@ module "rds_secret" {
   source               = "../../modules/aws-secret-manager"
   namespace            = "cloudgeeks.ca"
   stage                = "dev"
-  name                 = "redmine-rds-creds"
+  name                 = "rds-creds"
   secret-string         = {
     username             = "dbadmin"
     password             = var.rds-secret
@@ -136,7 +136,7 @@ module "kms_rds-mysql_key" {
   namespace               = "cloudgeeks.ca"
   stage                   = "dev"
   name                    = "rds-mysql-key"
-  alias                   = "alias/redmine"
+  alias                   = "alias/rds"
   deletion_window_in_days = "10"
 }
 
