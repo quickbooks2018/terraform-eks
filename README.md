@@ -2,6 +2,10 @@
 
 ##### https://www.youtube.com/c/AWSLinuxWindows
 
+- RDS Client
+```RDS
+kubectl run -it --rm --image=mysql:5.7 --restart=Never mysql-client -- mysql -h mydb.cpf3cewlmrdk.us-east-1.rds.amazonaws.com -u dbadmin -p12345678
+```
 ### Backend ###
 ##### S3
 
