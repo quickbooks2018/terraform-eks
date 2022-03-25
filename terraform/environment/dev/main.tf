@@ -29,6 +29,9 @@ terraform {
   }
 }
 
+#  Error: configmaps "aws-auth" already exists
+#  Solution: kubectl delete configmap aws-auth -n kube-system
+
 #########
 # Eks Vpc
 #########
