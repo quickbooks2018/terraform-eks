@@ -1,39 +1,32 @@
 #!/bin/bash
 
-######
-# .ssh
-######
-if [ -d /root/.ssh ]
-then
-	echo "/root/.ssh exists"
-else
-	mkdir -p /root/.ssh
-fi
-
-############
-# kubeconfig
-############
 if [ -d /root/.kube ]
 then
-	echo "/root/.kube exists"
+echo "/root/.kube exists"
+> /root/.kube/config
+
 else
-	mkdir -p /root/.kube
-	touch /root/.kube/config
+mkdir -p /root/.kube
+touch /root/.kube/config
 fi
 
-#####
-# PEM
-#####
+if [ -d /root/.ssh ]
+then
+echo "/root/.ssh exists"
+else
+mkdir -p /root/.ssh
+fi
+
 if [ -f /root/.ssh/*.pem ]
 then
-	echo "pem is there, I am removing it"
-	rm -f ~/.ssh/*.pem
-	export SSH_KEY_NAME="terraform-cloudgeeks"
-	aws ec2 create-key-pair --key-name "${SSH_KEY_NAME}" --query 'KeyMaterial' --output text > ~/.ssh/${SSH_KEY_NAME}.pem
+echo "pem is there, I am removing it"
+rm -f ~/.ssh/*.pem
+export SSH_KEY_NAME="terraform-cloudgeeks"
+aws ec2 create-key-pair --key-name "${SSH_KEY_NAME}" --query 'KeyMaterial' --output text > ~/.ssh/${SSH_KEY_NAME}.pem
 else
-	echo "All is well, now I am creating fresh PEM"
-	export SSH_KEY_NAME="terraform-cloudgeeks"
-	aws ec2 create-key-pair --key-name "${SSH_KEY_NAME}" --query 'KeyMaterial' --output text > ~/.ssh/${SSH_KEY_NAME}.pem
+echo "All is well, now I am creating fresh PEM"
+export SSH_KEY_NAME="terraform-cloudgeeks"
+aws ec2 create-key-pair --key-name "${SSH_KEY_NAME}" --query 'KeyMaterial' --output text > ~/.ssh/${SSH_KEY_NAME}.pem
 fi
 
-# End
+#End
