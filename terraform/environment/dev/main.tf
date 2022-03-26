@@ -81,10 +81,8 @@ module "eks" {
   vpc_id                    = module.eks_vpc.vpc_id
   subnets                   = module.eks_vpc.private_subnets
   create_eks                = true
-  manage_aws_auth           = true
-  write_kubeconfig          = true
-  kubeconfig_output_path    = "/root/.kube/config" # touch /root/.kube/config
-  kubeconfig_name           = "config"
+  manage_aws_auth           = false
+  write_kubeconfig          = false
   enable_irsa               = true                 # oidc
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
