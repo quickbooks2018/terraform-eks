@@ -61,9 +61,18 @@ module "eks_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+# https://aws.amazon.com/premiumsupport/knowledge-center/eks-vpc-subnet-discovery/
   private_subnet_tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "owned"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"           = "1"
   }
+
+  public_subnet_tags = {
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"       = "1"
+  }
+
 
 }
 
