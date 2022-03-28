@@ -7,14 +7,15 @@
 kubectl run -it --rm --image=mysql:5.7 --restart=Never mysql-client -- mysql -h mydb.cpf3cewlmrdk.us-east-1.rds.amazonaws.com -u dbadmin -p12345678
 ```
 - Create Deployment
+```kubectl
 kubectl create deployment <Deplyment-Name> --image=<Container-Image>
 kubectl create deployment first-deployment --image=quickbooks2018/blue:latest
- 
+``` 
  - Scale Deployment
- # Scale Up the Deployment
+```kubectl
 kubectl scale --replicas=20 deployment/<Deployment-Name>
 kubectl scale --replicas=20 deployment/first-deployment 
- 
+```
 
 - Application Load Balancer Ingress
 ```Application Load Balancer Ingress
