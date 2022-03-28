@@ -89,6 +89,7 @@ module "eks" {
   cluster_name              = "cloudgeeks-eks-dev"
   vpc_id                    = module.eks_vpc.vpc_id
   subnets                   = module.eks_vpc.private_subnets
+  workers_role_name         = "iam-eks-workers-role"
   create_eks                = true
   manage_aws_auth           = false
   write_kubeconfig          = false
