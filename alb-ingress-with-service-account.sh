@@ -30,8 +30,8 @@ eksctl create iamserviceaccount \
 # Get IAM Service Account
 eksctl get iamserviceaccount --cluster ${CLUSTER_NAME}
 
-# Describe Service Account alb-ingress-controller
-kubectl describe sa alb-ingress-controller -n kube-system
+# Describe Service Account aws-load-balancer-controller
+kubectl describe sa aws-load-balancer-controller -n kube-system
 
 # Add the eks-charts repository.
 helm repo add eks https://aws.github.io/eks-charts
