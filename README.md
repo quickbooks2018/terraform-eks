@@ -72,9 +72,9 @@ helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller -n
 
 ```console
 
-aws s3api create-bucket --bucket cloudgeeks-terraform --region us-east-1
+aws s3api create-bucket --bucket cloudgeeks-dev --region us-east-1
 
-aws s3api put-bucket-versioning --bucket cloudgeeks-terraform --versioning-configuration Status=Enabled
+aws s3api put-bucket-versioning --bucket cloudgeeks-dev --versioning-configuration Status=Enabled
 
 ```
 
